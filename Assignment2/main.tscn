@@ -1,0 +1,448 @@
+[gd_scene load_steps=34 format=2]
+
+[ext_resource path="res://bin/Game.gdns" type="Script" id=1]
+[ext_resource path="res://bin/StaminaRefill.gdns" type="Script" id=2]
+[ext_resource path="res://bin/Flight.gdns" type="Script" id=3]
+[ext_resource path="res://bin/StaminaBar.gdns" type="Script" id=4]
+[ext_resource path="res://bin/Timer.gdns" type="Script" id=5]
+[ext_resource path="res://bensound-extremeaction.ogg" type="AudioStream" id=6]
+[ext_resource path="res://SpawnPoint.tscn" type="PackedScene" id=7]
+[ext_resource path="res://shootingEnemy.tscn" type="PackedScene" id=8]
+[ext_resource path="res://finishline.jpg" type="Texture" id=9]
+
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.266667, 0.266667, 0.266667, 1 )
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.180392, 0.239216, 0.54902, 1 )
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.501961, 0, 0, 1 )
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 1, 0, 0.913725, 1 )
+
+[sub_resource type="BoxShape" id=6]
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_color = Color( 0, 0, 1, 1 )
+
+[sub_resource type="BoxShape" id=8]
+
+[sub_resource type="SpatialMaterial" id=9]
+albedo_color = Color( 1, 1, 0, 1 )
+
+[sub_resource type="BoxShape" id=10]
+
+[sub_resource type="SpatialMaterial" id=11]
+albedo_color = Color( 0.0705882, 0.596078, 0.976471, 1 )
+metallic_specular = 0.45
+
+[sub_resource type="ParticlesMaterial" id=12]
+emission_shape = 2
+emission_box_extents = Vector3( 4, 0.5, 0.41 )
+spread = 180.0
+gravity = Vector3( 0, -0.5, 0 )
+angular_velocity = 1.0
+angle = 182.1
+color = Color( 0.682353, 0, 0, 1 )
+hue_variation = 1.0
+
+[sub_resource type="SphereMesh" id=13]
+radius = 0.025
+
+[sub_resource type="BoxShape" id=14]
+
+[sub_resource type="BoxShape" id=15]
+
+[sub_resource type="SpatialMaterial" id=16]
+albedo_color = Color( 1, 0, 0, 1 )
+
+[sub_resource type="BoxShape" id=17]
+
+[sub_resource type="BoxShape" id=18]
+
+[sub_resource type="SpatialMaterial" id=19]
+albedo_color = Color( 1, 1, 0, 0 )
+
+[sub_resource type="CylinderShape" id=20]
+
+[sub_resource type="CylinderShape" id=21]
+
+[sub_resource type="SpatialMaterial" id=22]
+albedo_texture = ExtResource( 9 )
+
+[sub_resource type="BoxShape" id=23]
+
+[sub_resource type="BoxShape" id=24]
+
+[node name="Game" type="Node"]
+script = ExtResource( 1 )
+
+[node name="StaticBody" type="StaticBody" parent="."]
+transform = Transform( 30, 0, 0, 0, 4, 0, 0, 0, 14, 0, -4, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+shape = SubResource( 1 )
+
+[node name="CSGBox5" type="CSGBox" parent="StaticBody"]
+material = SubResource( 2 )
+
+[node name="StaticBody3" type="StaticBody" parent="."]
+transform = Transform( -1.32708e-06, 0, 28.08, 0, 4, 0, -30.36, 0, -1.22742e-06, -51.8435, 2.40013, 4.303 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody3"]
+shape = SubResource( 1 )
+
+[node name="CSGBox" type="CSGBox" parent="StaticBody3"]
+material = SubResource( 3 )
+
+[node name="platform" type="StaticBody" parent="."]
+editor/display_folded = true
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, -57.1674, 9.24794, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="platform"]
+shape = SubResource( 1 )
+
+[node name="CSGBox5" type="CSGBox" parent="platform"]
+material = SubResource( 4 )
+
+[node name="Floor" type="Node" parent="."]
+
+[node name="StaminaPickup" type="CSGBox" parent="."]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -52.0975, 10.7125, -6 )
+material = SubResource( 5 )
+script = ExtResource( 2 )
+
+[node name="Area" type="Area" parent="StaminaPickup"]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaminaPickup/Area"]
+shape = SubResource( 6 )
+
+[node name="StaminaPickup2" type="CSGBox" parent="."]
+editor/display_folded = true
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 4, 0.5, 12 )
+material = SubResource( 5 )
+script = ExtResource( 2 )
+
+[node name="Area" type="Area" parent="StaminaPickup2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaminaPickup2/Area"]
+shape = SubResource( 6 )
+
+[node name="StaminaPickup3" type="CSGBox" parent="."]
+editor/display_folded = true
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 28, 0.5, 12 )
+material = SubResource( 5 )
+script = ExtResource( 2 )
+
+[node name="Area" type="Area" parent="StaminaPickup3"]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaminaPickup3/Area"]
+shape = SubResource( 6 )
+
+[node name="StaminaPickup4" type="CSGBox" parent="."]
+editor/display_folded = true
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 28, 0.5, 10 )
+material = SubResource( 5 )
+script = ExtResource( 2 )
+
+[node name="Area" type="Area" parent="StaminaPickup4"]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaminaPickup4/Area"]
+shape = SubResource( 6 )
+
+[node name="FlightPickup" type="CSGBox" parent="."]
+editor/display_folded = true
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 12, 0.5, -11 )
+material = SubResource( 7 )
+script = ExtResource( 3 )
+
+[node name="Area" type="Area" parent="FlightPickup"]
+
+[node name="CollisionShape" type="CollisionShape" parent="FlightPickup/Area"]
+shape = SubResource( 8 )
+
+[node name="FlightPickup2" type="CSGBox" parent="."]
+editor/display_folded = true
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 28, 0.5, -11 )
+material = SubResource( 7 )
+script = ExtResource( 3 )
+
+[node name="Area" type="Area" parent="FlightPickup2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="FlightPickup2/Area"]
+shape = SubResource( 8 )
+
+[node name="StaticBody2" type="StaticBody" parent="."]
+transform = Transform( -0.75, 0, -8.74228e-08, 0, 1, 0, 6.55671e-08, 0, -1, 55.5, 0, 8 )
+
+[node name="CSGPolygon" type="CSGPolygon" parent="StaticBody2"]
+transform = Transform( 6, 0, 0, 0, 1, 0, 0, 0, 4, 0, 0, 0 )
+snap = 0.952
+polygon = PoolVector2Array( 0, 0, 0, 0, 1, 1, 1, 0 )
+
+[node name="CollisionPolygon" type="CollisionPolygon" parent="StaticBody2"]
+transform = Transform( 6, 0, 0, 0, 1, 0, 0, 0, 4, 0, 0, -2 )
+polygon = PoolVector2Array( 0, 0, 0, 0, 1, 1, 1, 0 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -28.0063, 13.6789, 0 )
+light_energy = 0.5
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 61.0
+margin_top = 33.0
+margin_right = 471.0
+margin_bottom = 63.0
+color = Color( 0, 0.0588235, 0.00784314, 1 )
+
+[node name="StaminaBar" type="ColorRect" parent="."]
+margin_left = 66.0
+margin_top = 36.0
+margin_right = 466.0
+margin_bottom = 60.0
+color = Color( 0.164706, 0.670588, 0.231373, 1 )
+script = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 65.0
+margin_top = 16.0
+margin_right = 191.0
+margin_bottom = 40.0
+custom_colors/font_color = Color( 0.145098, 0.376471, 0.0156863, 1 )
+text = "Stamina"
+
+[node name="Timer" type="RichTextLabel" parent="."]
+margin_left = 685.0
+margin_top = 25.0
+margin_right = 949.0
+margin_bottom = 74.0
+custom_colors/default_color = Color( 0.843137, 0.0588235, 0.0588235, 1 )
+script = ExtResource( 5 )
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -28.289
+
+[node name="wall" type="StaticBody" parent="."]
+transform = Transform( -6.55671e-07, 0, 1, 0, 7.76, 0, -15, 0, -4.37114e-08, 85.3151, 6.82, 0 )
+
+[node name="CSGBox3" type="CSGBox" parent="wall"]
+material = SubResource( 9 )
+
+[node name="CollisionShape" type="CollisionShape" parent="wall"]
+shape = SubResource( 10 )
+
+[node name="Particles" type="Particles" parent="."]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -5, 0, -4.37114e-08, 84.3151, 10.411, 0 )
+material_override = SubResource( 11 )
+amount = 100
+lifetime = 6.0
+speed_scale = 2.0
+visibility_aabb = AABB( -3.54083, -4, -5.25146, 7.08166, 8, 8 )
+process_material = SubResource( 12 )
+draw_pass_1 = SubResource( 13 )
+
+[node name="StaticBody4" type="StaticBody" parent="."]
+editor/display_folded = true
+transform = Transform( 20, 0, 0, 0, 1, 0, 0, 0, 14, 31, -7, 0 )
+
+[node name="CSGBox" type="CSGBox" parent="StaticBody4"]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody4"]
+shape = SubResource( 14 )
+
+[node name="StaticBody5" type="StaticBody" parent="."]
+transform = Transform( 17.67, 0, 0, 0, 4, 0, 0, 0, 14, 68.7681, -4, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody5"]
+shape = SubResource( 15 )
+
+[node name="CSGBox" type="CSGBox" parent="StaticBody5"]
+
+[node name="StaticBody6" type="StaticBody" parent="."]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 0.5, 0, 0, 0, 1, 50, -5.5, 5 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody6"]
+shape = SubResource( 15 )
+
+[node name="CSGBox" type="CSGBox" parent="StaticBody6"]
+material = SubResource( 16 )
+
+[node name="StaticBody7" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.5, 0, 0, 0, 1, 50, -4.5, 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody7"]
+shape = SubResource( 15 )
+
+[node name="CSGBox" type="CSGBox" parent="StaticBody7"]
+material = SubResource( 16 )
+
+[node name="StaticBody8" type="StaticBody" parent="."]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 0.5, 0, 0, 0, 1, 50, -3.5, 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody8"]
+shape = SubResource( 15 )
+
+[node name="CSGBox" type="CSGBox" parent="StaticBody8"]
+material = SubResource( 16 )
+
+[node name="StaticBody9" type="StaticBody" parent="."]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 0.5, 0, 0, 0, 1, 50, -2.5, -1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody9"]
+shape = SubResource( 15 )
+
+[node name="CSGBox" type="CSGBox" parent="StaticBody9"]
+material = SubResource( 16 )
+
+[node name="StaticBody10" type="StaticBody" parent="."]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 0.5, 0, 0, 0, 1, 50, -1.5, -3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody10"]
+shape = SubResource( 15 )
+
+[node name="CSGBox" type="CSGBox" parent="StaticBody10"]
+material = SubResource( 16 )
+
+[node name="StaticBody11" type="StaticBody" parent="."]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 0.5, 0, 0, 0, 1, 50, -0.5, -5 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody11"]
+shape = SubResource( 15 )
+
+[node name="CSGBox" type="CSGBox" parent="StaticBody11"]
+material = SubResource( 16 )
+
+[node name="StaticBody12" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 12, 0, 1, 2 )
+
+[node name="CSGBox" type="CSGBox" parent="StaticBody12"]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody12"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.77245e-05, 0.0187321, -0.0157528 )
+shape = SubResource( 17 )
+
+[node name="StaticBody13" type="StaticBody" parent="."]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 6, 8, 1, 8 )
+
+[node name="CSGBox" type="CSGBox" parent="StaticBody13"]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody13"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.77245e-05, 0.0187321, -0.0157528 )
+shape = SubResource( 17 )
+
+[node name="StaticBody15" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 3, 16, 1, 11 )
+
+[node name="CSGBox" type="CSGBox" parent="StaticBody15"]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody15"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.77245e-05, 0.0187321, -0.0157528 )
+shape = SubResource( 17 )
+
+[node name="StaticBody14" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 6, 8, 1, -8 )
+
+[node name="CSGBox" type="CSGBox" parent="StaticBody14"]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody14"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.77245e-05, 0.0187321, -0.0157528 )
+shape = SubResource( 17 )
+
+[node name="StaticBody16" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 10, 16, 1, -4 )
+
+[node name="CSGBox" type="CSGBox" parent="StaticBody16"]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody16"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.77245e-05, 0.0187321, -0.0157528 )
+shape = SubResource( 17 )
+
+[node name="SpawnPoint" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -5 )
+
+[node name="shootEnemyOne" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -32.94, 9.68954, 3.60882 )
+
+[node name="wall2" type="StaticBody" parent="."]
+transform = Transform( -4.67275e-07, 0, 1, 0, 4.14, 0, -10.69, 0, -4.37114e-08, -37.7796, 8.3419, 9.76957 )
+
+[node name="CollisionShape" type="CollisionShape" parent="wall2"]
+shape = SubResource( 18 )
+
+[node name="CSGBox" type="CSGBox" parent="wall2"]
+material = SubResource( 19 )
+
+[node name="wall3" type="StaticBody" parent="."]
+transform = Transform( -4.67275e-07, 0, 1, 0, 4.14, 0, -10.69, 0, -4.37114e-08, -28.1898, 8.3419, 9.76957 )
+
+[node name="CollisionShape" type="CollisionShape" parent="wall3"]
+shape = SubResource( 18 )
+
+[node name="CSGBox" type="CSGBox" parent="wall3"]
+material = SubResource( 19 )
+
+[node name="waypointv2" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -33.4801, 8.54873, 15.9341 )
+
+[node name="wayPtTwo" type="CSGCylinder" parent="waypointv2"]
+radius = 2.495
+height = 5.08
+
+[node name="Area" type="Area" parent="waypointv2/wayPtTwo"]
+
+[node name="CollisionShape" type="CollisionShape" parent="waypointv2/wayPtTwo/Area"]
+transform = Transform( 2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0 )
+shape = SubResource( 20 )
+
+[node name="CollisionShape" type="CollisionShape" parent="waypointv2"]
+transform = Transform( 2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0 )
+shape = SubResource( 21 )
+
+[node name="waypoint" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -33.4801, 8.54873, -15.2221 )
+
+[node name="wayPtOne" type="CSGCylinder" parent="waypoint"]
+radius = 2.495
+height = 5.08
+
+[node name="Area" type="Area" parent="waypoint/wayPtOne"]
+
+[node name="CollisionShape" type="CollisionShape" parent="waypoint/wayPtOne/Area"]
+transform = Transform( 2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0 )
+shape = SubResource( 20 )
+
+[node name="CollisionShape" type="CollisionShape" parent="waypoint"]
+transform = Transform( 2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0 )
+shape = SubResource( 21 )
+
+[node name="finish line" type="StaticBody" parent="."]
+transform = Transform( 0.28, 0, 0, 0, 1.51, 0, 0, 0, 7.27, 74.149, 6.4158, -5.0178 )
+
+[node name="finnish" type="CSGBox" parent="finish line"]
+material = SubResource( 22 )
+
+[node name="Area" type="Area" parent="finish line/finnish"]
+transform = Transform( 1, 0, 0, 0, 2.82, 0, 0, 0, 1, 0, -2.58095, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="finish line/finnish/Area"]
+shape = SubResource( 23 )
+
+[node name="CollisionShape" type="CollisionShape" parent="finish line"]
+shape = SubResource( 24 )
+
+[node name="CSGCylinder" type="CSGCylinder" parent="finish line"]
+transform = Transform( 0.357143, 0, 0, 0, 3.31126, 0, 0, 0, 0.0137552, -0.00798035, -2.76432, 0.969745 )
+
+[node name="CSGCylinder2" type="CSGCylinder" parent="finish line"]
+transform = Transform( 0.357143, 0, 0, 0, 3.31126, 0, 0, 0, 0.0137552, -0.00798035, -2.76432, -0.958994 )

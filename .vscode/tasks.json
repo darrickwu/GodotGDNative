@@ -1,0 +1,52 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558 
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "build X11",
+            "command": "scons",
+            "args": [
+                "platform=x11"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/.."
+            },
+            "problemMatcher": [
+                "$msCompile"
+            ],
+            "group": "build"
+        },
+        {
+            "type": "shell",
+            "label": "build OSX",
+            "command": "scons",
+            "args": [
+                "platform=osx"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/.."
+            },
+            "problemMatcher": [
+                "$msCompile"
+            ],
+            "group": "build"
+        },
+        {
+            "type": "shell",
+            "label": "build Windows",
+            "command": "scons",
+            "args": [
+                "platform=windows"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/.."
+            },
+            "problemMatcher": [
+                "$msCompile"
+            ],
+            "group": "build"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/CameraOBJ.obj-81e98af180f07b5a92d532d624713b87.mesh"
+
+[deps]
+
+files=[ "res://.import/CameraOBJ.obj-81e98af180f07b5a92d532d624713b87.mesh" ]
+
+source_file="res://CameraOBJ.obj"
+dest_files=[ "res://.import/CameraOBJ.obj-81e98af180f07b5a92d532d624713b87.mesh", "res://.import/CameraOBJ.obj-81e98af180f07b5a92d532d624713b87.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

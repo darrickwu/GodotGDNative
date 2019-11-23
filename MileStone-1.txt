@@ -1,0 +1,35 @@
+Overall Design
+	Platformer like game where you wander around a track and try to get as many
+	 points as possible until the player’s stamina runs out by interacting with
+	  the scene. Different types of movement and interactions costs different 
+	  amounts of stamina. We will have a character followed around by a 
+	  3d camera. Sound effects will happen anytime a point is awarded and 
+	  there will be background music present at all times. GUI will display
+	   current points and stamina left. Potentially stamina refills if you 
+	   collect them.
+
+
+Software Architecture and Plan
+	Kinematic Body class and associated script for player movement and 
+	interaction with the scene. Score and stamina can be kept inside this 
+	class if necessary. 
+	Any type of class and script necessary for other scene objects
+	Basic implementation of game will be easy, we will probably spend most of
+	 the time setting up the scene to be as interactive and engaging as 
+	 possible.
+
+
+Division of Labor
+	Basic Movement already implemented + double jump custom movement
+	Since we are all busy we will work together to implement things in the 
+	following order
+	1. WalkableAngle
+	2. Ledge Stop/Ledge Hang
+	3. Flying
+	4. Object interactions
+	5. GUI and Status Display
+	6. Sound effects and Background music
+	7. More complex Camera controls(semi transparent geometry and mouse input)
+	8. Tune physics and collision detection
+	
+	
